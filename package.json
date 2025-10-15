@@ -1,9 +1,11 @@
 {
-  "name": "fichajes-app",
+  "name": "shiftlog-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "env:init": "copy src\\environments\\environment.template.ts src\\environments\\environment.ts >NUL 2>&1 || (echo Environment file created)",
+    "env:check": "powershell -NoProfile -Command \"if (-Not (Test-Path 'src/environments/environment.ts')) { Write-Error 'Missing src/environments/environment.ts. Run npm run env:init and fill your Firebase config.'; exit 1 }\"",
+    "start": "npm run env:check && ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -25,9 +27,12 @@
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
+    "@angular/fire": "^20.0.1",
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "@dataconnect/generated": "file:src/dataconnect-generated",
+    "firebase": "^11.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

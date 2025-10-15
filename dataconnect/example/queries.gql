@@ -1,0 +1,25 @@
+mutation CreatePunch($userId: UUID!, $punchTime: Timestamp!, $punchType: String!) @auth(level: USER) {
+  punch_insert(data: {userId: $userId, punchTime: $punchTime, punchType: $punchType, createdAt_expr: "request.time"})
+}
+
+query GetWorkSessionsForUser($userId: UUID!) @auth(level: USER) {
+  workSessions(where: {userId: {eq: $userId}}) {
+    id
+    startTime
+    endTime
+    totalDurationInMinutes
+  }
+}
+
+mutation CreateUser($username: String!, $passwordHash: String!, $displayName: String!) @auth(level: PUBLIC) {
+  user_insert(data: {username: $username, passwordHash: $passwordHash, displayName: $displayName, createdAt_expr: "request.time"})
+}
+
+query GetUserByUsername($username: String!) @auth(level: PUBLIC) {
+  user(first: {where: {username: {eq: $username}}}) {
+    id
+    username
+    displayName
+    passwordHash
+  }
+}

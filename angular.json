@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fichajes-app": {
+  "shiftlog-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "fichajes-app:build:production"
+              "buildTarget": "shiftlog-app:build:production"
             },
             "development": {
-              "buildTarget": "fichajes-app:build:development"
+              "buildTarget": "shiftlog-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -94,5 +94,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

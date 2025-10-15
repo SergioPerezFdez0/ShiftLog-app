@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+match /databases/{database}/documents {
+
+
+function isSignedIn() {
+return request.auth != null;
+}
+
+
+match /timeEntries/{docId} {
+allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid
+&& request.resource.data.keys().hasOnly(['userId','checkIn','checkOut','comment','dayKey']);
+allow read, update, delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+}
+
+
+match /users/{userId} {
+allow create: if isSignedIn() && userId == request.auth.uid;
+allow read, update, delete: if isSignedIn() && userId == request.auth.uid;
+}
+}
+}

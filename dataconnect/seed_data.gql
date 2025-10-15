@@ -1,0 +1,44 @@
+mutation CreateSeedData @transaction @auth(level: USER) {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      username: "demouser1",
+      passwordHash: "somehash1",
+      createdAt: "2024-01-01T00:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      username: "demouser2",
+      passwordHash: "somehash2",
+      createdAt: "2024-01-02T00:00:00Z"
+    }
+  ])
+  punch_insertMany(data: [
+    {
+      id: "660e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      punchTime: "2024-01-03T08:00:00Z",
+      createdAt: "2024-01-03T08:00:00Z",
+      punchType: "IN"
+    },
+    {
+      id: "660e8400-e29b-41d4-a716-446655440001",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      punchTime: "2024-01-03T17:00:00Z",
+      createdAt: "2024-01-03T17:00:00Z",
+      punchType: "OUT"
+    }
+  ])
+  workSession_insertMany(data: [
+    {
+      id: "770e8400-e29b-41d4-a716-446655440000",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      punchInId: "660e8400-e29b-41d4-a716-446655440000",
+      punchOutId: "660e8400-e29b-41d4-a716-446655440001",
+      startTime: "2024-01-03T08:00:00Z",
+      endTime: "2024-01-03T17:00:00Z",
+      createdAt: "2024-01-03T08:00:00Z",
+      totalDurationInMinutes: 540
+    }
+  ])
+}

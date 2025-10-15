@@ -1,0 +1,27 @@
+type User @table {
+  username: String!
+  passwordHash: String!
+  createdAt: Timestamp!
+  displayName: String
+  role: String
+}
+
+type Punch @table {
+  user: User!
+  punchTime: Timestamp!
+  punchType: String!
+  createdAt: Timestamp!
+  comment: String
+}
+
+type WorkSession @table {
+  user: User!
+  punchIn: Punch!
+  punchOut: Punch!
+  startTime: Timestamp!
+  endTime: Timestamp!
+  totalDurationInMinutes: Int!
+  createdAt: Timestamp!
+  punchInComment: String
+  punchOutComment: String
+}

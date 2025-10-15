@@ -2,15 +2,26 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
 
-## Development server
+ShiftLog-app is a small web application for recording employee time punches (clock-ins and clock-outs) and querying work sessions. It's built with Angular and uses Firebase for authentication and hosting. The project includes generated Data Connect SDKs to interact with the backend datasource.
 
-To start a local development server, run:
+## What this app does
 
-```bash
-ng serve
+- Allow users to log in and record time punches (entry/exit).
+- Store each punch with a timestamp and type (e.g. `in` / `out`).
+- Query work sessions for a specific user, including start and end.
+- Provide a minimal UI with a login screen and a punch screen.
+
+## Quick start
+
+1. Install dependencies:
+
+```powershell
+npm install
 ```
 
-then, navigate to the generated localhost URL.
+2. Setup the environment as explained below.
+
+3. Build or deploy the app.
 
 ## Environment setup
 
@@ -31,21 +42,22 @@ Notes:
 - `src/environments/environment.ts` is ignored by Git, so your secrets won’t be committed.
 - The dev server/start script will fail fast if the environment file is missing and will guide you to create it.
 
-## Development server
+## Deploy to Firebase Hosting
 
-To start a local development server, run:
-
-```powershell
-npm start
-```
-
-then navigate to the printed localhost URL.
-
-## Build and deploy
+1. Make sure `src/environments/environment.ts` is correct.
+2. Build for production: `ng build --configuration production`.
+3. Deploy:
 
 ```powershell
-ng build --configuration production
 firebase deploy
 ```
 
-Then navigate to the generated hosting URL.
+## Local development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Then, navigate to the generated localhost URL.

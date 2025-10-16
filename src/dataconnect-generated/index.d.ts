@@ -7,9 +7,6 @@ export type UUIDString = string;
 export type Int64String = string;
 export type DateString = string;
 
-
-
-
 export interface CreatePunchData {
   punch_insert: Punch_Key;
 }
@@ -72,9 +69,7 @@ export interface WorkSession_Key {
 }
 
 interface CreatePunchRef {
-  /* Allow users to create refs without passing in DataConnect */
   (vars: CreatePunchVariables): MutationRef<CreatePunchData, CreatePunchVariables>;
-  /* Allow users to pass in custom DataConnect instances */
   (dc: DataConnect, vars: CreatePunchVariables): MutationRef<CreatePunchData, CreatePunchVariables>;
   operationName: string;
 }
@@ -84,9 +79,7 @@ export function createPunch(vars: CreatePunchVariables): MutationPromise<CreateP
 export function createPunch(dc: DataConnect, vars: CreatePunchVariables): MutationPromise<CreatePunchData, CreatePunchVariables>;
 
 interface GetWorkSessionsForUserRef {
-  /* Allow users to create refs without passing in DataConnect */
   (vars: GetWorkSessionsForUserVariables): QueryRef<GetWorkSessionsForUserData, GetWorkSessionsForUserVariables>;
-  /* Allow users to pass in custom DataConnect instances */
   (dc: DataConnect, vars: GetWorkSessionsForUserVariables): QueryRef<GetWorkSessionsForUserData, GetWorkSessionsForUserVariables>;
   operationName: string;
 }
@@ -96,9 +89,7 @@ export function getWorkSessionsForUser(vars: GetWorkSessionsForUserVariables): Q
 export function getWorkSessionsForUser(dc: DataConnect, vars: GetWorkSessionsForUserVariables): QueryPromise<GetWorkSessionsForUserData, GetWorkSessionsForUserVariables>;
 
 interface CreateUserRef {
-  /* Allow users to create refs without passing in DataConnect */
   (vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
-  /* Allow users to pass in custom DataConnect instances */
   (dc: DataConnect, vars: CreateUserVariables): MutationRef<CreateUserData, CreateUserVariables>;
   operationName: string;
 }
@@ -108,9 +99,7 @@ export function createUser(vars: CreateUserVariables): MutationPromise<CreateUse
 export function createUser(dc: DataConnect, vars: CreateUserVariables): MutationPromise<CreateUserData, CreateUserVariables>;
 
 interface GetUserByUsernameRef {
-  /* Allow users to create refs without passing in DataConnect */
   (vars: GetUserByUsernameVariables): QueryRef<GetUserByUsernameData, GetUserByUsernameVariables>;
-  /* Allow users to pass in custom DataConnect instances */
   (dc: DataConnect, vars: GetUserByUsernameVariables): QueryRef<GetUserByUsernameData, GetUserByUsernameVariables>;
   operationName: string;
 }
